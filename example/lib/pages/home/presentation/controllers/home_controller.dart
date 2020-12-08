@@ -13,12 +13,13 @@ class HomeController extends GetxController with StateMixin<CasesModel> {
   @override
   void onInit() {
     super.onInit();
-    // show loading on start, data on success
-    // and error message on error with 0 boilerplate
+
     homeRepository.getCases().then((data) {
       change(data, status: RxStatus.success());
     }, onError: (err) {
       change(null, status: RxStatus.error(err.toString()));
     });
   }
+
+
 }
